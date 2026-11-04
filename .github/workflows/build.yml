@@ -9,11 +9,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Download Gradle Wrapper
+      run: wget -O gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradle/wrapper/gradle-wrapper.jar
     - name: Build
       run: |
         chmod +x gradlew
         ./gradlew assembleDebug --no-daemon
-    - name: Upload
+    - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
         name: Hanz-APK
